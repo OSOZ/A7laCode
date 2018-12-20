@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/bar.css}" rel="stylesheet" />
+<title></title>
+</head>
+<body>
+	<div th:insert="fragments/header.html :: header"></div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Numero de la demande</th>
+				<th>date de la demande</th>
+				<th>Lieu</th>
+				<th>Date d'entree</th>
+				<th>Disponibilite</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="demande : ${demandes}">
+				<td th:text="${demande.demandeId}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

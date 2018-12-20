@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8" />
+<title>INVENTAIRE</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+	<section id="cover">
+		<div id="cover-caption">
+			<div id="container" class="container">
+				<div class="row text-black">
+					<div class="col-sm-10 offset-sm-1 text-center">
+						<h1 class="display-3">Remplissez le formulaire !</h1>
+						<div class="info-form">
+							<form th:action="@{/inventaire/materiels/addMateriel}"
+								method="post" th:object="${materiel}">
+								<div>
+									<input type="hidden" th:field="*{inventaireId}">
+								</div>
+								<div class="form-group">
+									<input th:field="*{ref}" type="text"
+										class="form-control" placeholder ="Reference"/>
+								</div>
+								<div class="form-group">
+									 <input th:field="*{name}" type="text"
+										class="form-control" placeholder ="nom du materiel"/>
+								</div>
+								<div class="form-group">
+									 <input th:field="*{lieu}"
+										class="form-control" placeholder ="lieu">
+								</div>
+								<div class="form-group">
+									<input th:field="*{dateDentree}"
+										type="date" class="form-control" placeholder ="date d'entree au departement ex : (yyyy-MM-dd)"/>
+								</div>
+								<div>
+									<input type="submit" value="Ajouter Materiel"
+										class="btn btn-primary" />
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

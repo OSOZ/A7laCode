@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/bar.css}" rel="stylesheet" />
+<title></title>
+</head>
+<body>
+	<div th:insert="fragments/header.html :: header"></div>
+	<div><a th:href="@{/inventaire/materiels/addMateriel/(id=${inventaireId})}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ajouter un nouveau Materiel</a></div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Ref</th>
+				<th>Name</th>
+				<th>Lieu</th>
+				<th>Date d'entree</th>
+				<th>Disponibilite</th>
+				<th>Demander Materiel</th>
+				<th th:if="${'ADMIN' == #strings.toString(role)}">Editer
+					Materiel</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="materiel : ${materiels}">
+				<td th:text="${materiel.ref}"></td>
+				<td th:text="${materiel.name}"></td>
+				<td th:text="${materiel.lieu}"></td>
+				<td th:text="${materiel.dateDentree}"></td>
+				<td><span th:if="${materiel.disponible} == true" th:text="oui"></span>
+					<span th:if="${materiel.disponible} == false" th:text="non"></span>
+				</td>
+				<td><a
+					th:href="@{/materiels/demander/(id=${materiel.materielId})}">Demander
+						Materiel</a></td>
+				<td th:if="${'ADMIN' == #strings.toString(role)}"><a
+					th:href="@{/inventaire/materiels/editer/(id=${inventaireId})}">editer
+						materiel</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
